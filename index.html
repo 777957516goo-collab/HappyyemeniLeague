@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دوري تشنغدو اليمني | 成都也门足球联赛</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Amiri:wght@400;700&family=Outfit:wght@400;600;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --yemen-red: #CE1126;
+        --yemen-black: #000000;
+        --yemen-white: #ffffff;
+      }
+      
+      body {
+        font-family: 'Cairo', sans-serif;
+        background: #020617;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      .font-brand { font-family: 'Amiri', serif; }
+      .font-ui { font-family: 'Outfit', sans-serif; }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #020617; }
+      ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--yemen-red); }
+
+      .glass {
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Card Flip Logic */
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+
+      .card-container:hover .card-inner, .card-container.is-flipped .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1.5rem;
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+        background: #0f172a;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      /* FUT Card Shape */
+      .fut-card-shape {
+        clip-path: url(#fut-card-path);
+      }
+
+      /* Holographic Shine */
+      .fifa-card-shine {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+        z-index: 5;
+        pointer-events: none;
+      }
+
+      .card-container:hover .fifa-card-shine {
+        transform: translateX(100%);
+      }
+
+      /* Glow Effects */
+      .glow-gold { box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+      .glow-silver { box-shadow: 0 0 40px rgba(192, 192, 192, 0.3); }
+      .glow-bronze { box-shadow: 0 0 40px rgba(205, 127, 50, 0.3); }
+
+      .hero-pattern {
+        background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+        background-size: 40px 40px;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fade {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+      }
+    }
+    </script>
+  </head>
+  <body class="hero-pattern">
+    <!-- SVG Clip Path for FUT Card -->
+    <svg width="0" height="0" style="position: absolute;">
+      <defs>
+        <clipPath id="fut-card-path" clipPathUnits="objectBoundingBox">
+          <path d="M0,0.05 C0,0.02,0.05,0,0.1,0 L0.9,0 C0.95,0,1,0.02,1,0.05 L1,0.7 C1,0.75,0.95,0.85,0.5,1 C0.05,0.85,0,0.75,0,0.7 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+    <div id="root"></div>
+  </body>
+</html>
